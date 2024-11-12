@@ -1,4 +1,19 @@
 package org.example.university_phd.service;
 
-public class UniversityService {
+import org.example.university_phd.model.University;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+public interface UniversityService {
+
+    long countUniversities();
+    Page<University> pageUniversitiesMatchingAll(University university, Pageable pageable);
+    University createUniversity(University university);
+    University getUniversity(String id);
+    University deleteUniversity(String id);
+    void deleteAllUniversities();
+    void saveAllUniversities(List<University> universities);
+
 }
