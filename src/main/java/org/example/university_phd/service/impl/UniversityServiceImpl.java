@@ -3,6 +3,7 @@ package org.example.university_phd.service.impl;
 import org.example.university_phd.model.University;
 import org.example.university_phd.repo.UniversityRepository;
 import org.example.university_phd.service.UniversityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ public class UniversityServiceImpl implements UniversityService {
 
     private final UniversityRepository universityRepo;
 
+    @Autowired
     public UniversityServiceImpl(UniversityRepository universityRepo) {
         this.universityRepo = universityRepo;
     }
