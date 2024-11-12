@@ -15,5 +15,6 @@ public interface UniversityService {
     void deleteUniversity(String id);
     void deleteAllUniversities();
     void saveAllUniversities(List<University> universities);
+    Page<University> getUniversities(Pageable pageable);
 
 }

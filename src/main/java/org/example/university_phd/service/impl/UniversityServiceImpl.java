@@ -59,4 +59,10 @@ public class UniversityServiceImpl implements UniversityService {
     public void saveAllUniversities(List<University> universities) {
         universityRepo.saveAll(universities);
     }
+
+    @Override
+    public Page<University> getUniversities(Pageable pageable) {
+        Page<University> universities = universityRepo.findAll(pageable);
+        return universities;
+    }
 }
