@@ -17,8 +17,6 @@ public interface UniversityRepository extends MongoRepository<University, String
     Optional<University> getByName(String universityName);
     List<University> findByType(String type);
     List<University> findByNameContaining(String universityName);
-    List<University> findByNameStartingWith(String universityName);
-    List<University> findByNameEndingWith(String universityName);
     @Query("{ 'type': ?0, 'numberOfStudents': {$gte: ?1}}")
     List<University> findUniversitiesByTypeAndNumberOfStudentsGreaterThan(String type, int numberOfStudents);
     @Query("{ 'departments': {$in: ?0}}")
