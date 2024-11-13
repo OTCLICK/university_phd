@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Document(collection = "universities")
 public class University {
@@ -19,6 +20,15 @@ public class University {
     private String phoneNumber;
 
     public University() {}
+
+    public University(String name, String s, List<String> strings, int i, int i1, String s1) {
+        this.name = name;
+        this.type = s;
+        this.departments = strings.toArray(new String[strings.size()]);
+        this.buildingNumber = i;
+        this.numberOfStudents = i1;
+        this.phoneNumber = s1;
+    }
 
     public String getId() {
         return id;
