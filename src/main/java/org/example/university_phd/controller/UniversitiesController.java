@@ -5,10 +5,7 @@ import org.example.university_phd.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -23,6 +20,27 @@ public class UniversitiesController {
             @RequestParam(defaultValue = "10") Integer limit
     ) {
         return universityService.getUniversities(PageRequest.of(offset, limit));
+    }
+
+    @PutMapping("/universities/{id}")
+    public University putUniversity(@PathVariable String id, @RequestBody University newUniversity) {
+        newUniversity.setId(id);
+        return universityService.createUniversity(newUniversity);
+    }
+
+    @GetMapping("/universities/{id}")
+    public University getUniversity(@PathVariable String id) {
+        return universityService.getUniversity(id);
+    }
+
+    @PostMapping("/universities")
+    public University postUniversity(@RequestBody University newUniversity) {
+        return universityService.createUniversity(newUniversity);
+    }
+
+    @DeleteMapping("/universities/{id}")
+    public void deleteUniversity(@PathVariable String id) {
+        universityService.deleteUniversity(id);
     }
 
 }
