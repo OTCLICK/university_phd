@@ -1,7 +1,10 @@
 package org.example.university_phd.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +15,8 @@ public class University {
     @Id
     private String id;
 
+    @Field(name = "name")
+    @Indexed(unique = false, sparse = true, direction = IndexDirection.ASCENDING, background = false)
     private String name;
     private String type;
     private String[] departments;
