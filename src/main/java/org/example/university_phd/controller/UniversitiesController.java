@@ -1,5 +1,6 @@
 package org.example.university_phd.controller;
 
+import org.example.university_phd.dto.UniversityDTO;
 import org.example.university_phd.model.University;
 import org.example.university_phd.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UniversitiesController {
     private UniversityService universityService;
 
     @GetMapping("/universities")
-    public Page<University> getUniversitiesPage(
+    public Page<UniversityDTO> getUniversitiesPage(
             @RequestParam(defaultValue = "0") Integer offset,
             @RequestParam(defaultValue = "10") Integer limit
     ) {
@@ -23,18 +24,18 @@ public class UniversitiesController {
     }
 
     @PutMapping("/universities/{id}")
-    public University putUniversity(@PathVariable String id, @RequestBody University newUniversity) {
+    public UniversityDTO putUniversity(@PathVariable String id, @RequestBody UniversityDTO newUniversity) {
         newUniversity.setId(id);
         return universityService.createUniversity(newUniversity);
     }
 
     @GetMapping("/universities/{id}")
-    public University getUniversity(@PathVariable String id) {
+    public UniversityDTO getUniversity(@PathVariable String id) {
         return universityService.getUniversity(id);
     }
 
     @PostMapping("/universities")
-    public University postUniversity(@RequestBody University newUniversity) {
+    public UniversityDTO postUniversity(@RequestBody UniversityDTO newUniversity) {
         return universityService.createUniversity(newUniversity);
     }
 

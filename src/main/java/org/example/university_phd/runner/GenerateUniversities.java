@@ -1,6 +1,7 @@
 package org.example.university_phd.runner;
 
 import com.github.javafaker.Faker;
+import org.example.university_phd.dto.UniversityDTO;
 import org.example.university_phd.model.University;
 import org.example.university_phd.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,18 +48,22 @@ public class GenerateUniversities implements CommandLineRunner {
         return list1;
     }
 
-    private List<University> generateUniversities() throws ParseException {
-        List<University> universities = new ArrayList<>(LIST_SIZE);
+    private List<UniversityDTO> generateUniversities() throws ParseException {
+        List<UniversityDTO> universitiesDto = new ArrayList<>(LIST_SIZE);
         for (int i = 0; i < LIST_SIZE; i++) {
-            universities.add(new University(
-                    faker.university().name(),
-                    oneOf(types),
-                    manyOf(departments),
-                    faker.number().numberBetween(1, 60),
-                    faker.number().numberBetween(2000, 55000),
-                    faker.phoneNumber().phoneNumber()
-            ));
+            UniversityDTO universityDto = new UniversityDTO();
+            universityDto.setName(faker.university().name());
+            universityDto.setType(oneOf(types));
+
+            String[] departmentsArray = manyOf(departments).toArray(new String[0]);
+            universityDto.setDepartments(departmentsArray);
+
+            universityDto.setBuildingNumber(faker.number().numberBetween(1, 60));
+            universityDto.setNumberOfStudents(faker.number().numberBetween(2000, 55000));
+            universityDto.setPhoneNumber(faker.phoneNumber().phoneNumber());
+
+            universitiesDto.add(universityDto);
         }
-        return universities;
+        return universitiesDto;
     }
 }
