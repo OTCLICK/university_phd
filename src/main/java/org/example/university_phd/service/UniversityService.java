@@ -13,7 +13,6 @@ public interface UniversityService {
     University createUniversity(University university);
     University getUniversity(String id);
     void deleteUniversity(String id);
-    void deleteAllUniversities();
     void saveAllUniversities(List<University> universities);
     Page<University> getUniversities(Pageable pageable);
 

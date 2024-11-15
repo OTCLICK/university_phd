@@ -51,11 +51,6 @@ public class UniversityServiceImpl implements UniversityService {
     }
 
     @Override
-    public void deleteAllUniversities() {
-        universityRepo.deleteAll();
-    }
-
-    @Override
     public void saveAllUniversities(List<University> universities) {
         universityRepo.saveAll(universities);
     }

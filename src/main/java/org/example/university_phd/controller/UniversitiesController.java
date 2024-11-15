@@ -43,4 +43,11 @@ public class UniversitiesController {
         universityService.deleteUniversity(id);
     }
 
+    @GetMapping("/universities/count")
+    public long getUniversityCount() {
+        return universityService.countUniversities();
+    }
+
+
+
 }
